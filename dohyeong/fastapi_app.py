@@ -1,5 +1,6 @@
 # fastapi_app.py
 import json
+import os
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -8,11 +9,11 @@ import requests
 app = FastAPI()
 
 class CompletionExecutor:
-    def __init__(self, host, api_key, api_key_primary_val, request_id):
-        self._host = host
-        self._api_key = api_key
-        self._api_key_primary_val = api_key_primary_val
-        self._request_id = request_id
+    def __init__(self):
+        self._host = os.getenv('API_HOST')
+        self._api_key = os.getenv('API_KEY')
+        self._api_key_primary_val = os.getenv('API_KEY_PRIMARY_VAL')
+        self._request_id = os.getenv('REQUEST_ID')
 
     def execute(self, completion_request):
         headers = {
