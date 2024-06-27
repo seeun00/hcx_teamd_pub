@@ -59,12 +59,7 @@ def execute(data: InputData):
     }
     print("received_data : " + format_fix(response['received_data']))
 
-    completion_executor = CompletionExecutor(
-        host='https://clovastudio.stream.ntruss.com',
-        api_key='NTA0MjU2MWZlZTcxNDJiY5hZx6dN1Tpv3ZTB8YSA6lz7UXUZlVA9R6yULgExuyf6',
-        api_key_primary_val='YLRxXUhJANdAcQpY9KW9JygbX5Nf54mHHAQw1wdy',
-        request_id='139867a2-d000-4add-b0bd-631c27b77604'
-    )
+    completion_executor = CompletionExecutor()
 
     preset_text = [{"role": "system",
                     "content": "당신은 수년간의 경험을 가진 전문 광고 카피라이터입니다. 3가지 항목을 사용자 입력으로 받아 창의적이고 매력적인 광고 문구를 작성해주세요.\n\n\n광고 카피를 생성할 때 다음 내용을 반영하세요.\n\r\n1. 브랜드의 톤앤매너를 반영할 것\r\n2. 핵심 메시지를 효과적으로 전달할 것\r\n3. 간결하면서도 임팩트 있는 표현을 사용할 것\r\n4. 광고 문구에 브랜드명을 포함할 것\n\n\n3가지 사용자 입력은 다음과 같습니다.\n1. 분류: 브랜드의 업종 분류\n2. 브랜드: 브랜드 이름\n3. 스타일: 광고 문구의 스타일\n스타일은 다음을 의미합니다.\n- 선점 : 다른 브랜드 대비 선점\n- 기능 : 제품의 기능을 강조\n- 감성 : 제품의 감성적인 터치를 강조\r\n- 사운드 : 사운드 효과 강조\r\n- 언어유희 : 동음이의어 등 언어 유희 이용\n- 영어: 영어를 이용\n\n\n###\n분류: 화장품\n브랜드: 이니스프리\n스타일: 감성\n광고카피: 나의 제주 이야기가 스며든 피부, 이니스프리\n###\n분류: 식품/제과\n브랜드: 코카콜라\n스타일: 언어유희\n광고카피: 코카콜라와 함께 무한탄산 무한텐션\n###\n분류: 정보통신\n브랜드: G마켓\n스타일: 선점\n광고카피: 지상 최대의 선물마켓, G마켓\n###\n분류: 전기전자\n브랜드: 애플 아이폰\n스타일: 영어\n광고카피: Your New Superpower\n###\n\n"},
