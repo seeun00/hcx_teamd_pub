@@ -87,7 +87,12 @@ def execute(data: InputData):
     print("-------------------------------------")
     print(parse_event_data(result_str))
     print("-------------------------------------")
-    return response
+
+    result = {
+        "message": "데이터가 성공적으로 처리되었습니다.",
+        "data": result_str
+    }
+    return result
 
 
 def parse_event_data(event_data: str) -> str:
