@@ -1,4 +1,6 @@
 # streamlit_app.py
+import base64
+
 import streamlit as st
 import requests
 
@@ -46,9 +48,15 @@ import requests
 #     </style>
 # """, unsafe_allow_html=True)
 
+def get_image_as_base64(file_path: str) -> str:
+    with open(file_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode('utf-8')
+image_path = "/Users/handohyeong/projects/dumb_d/dohyeong/dumbd_image.webp"
+image_base64 = get_image_as_base64(image_path)
+
 st.markdown('<div class="container">', unsafe_allow_html=True)
 st.markdown('<h1>외로운 대행사의 카피라이터, 김카피</h1>', unsafe_allow_html=True)
-st.markdown('<img src="https://via.placeholder.com/150" alt="profile-pic">', unsafe_allow_html=True)
+st.markdown(f'<img src="data:image/webp;base64,{image_base64}" alt="profile-pic">', unsafe_allow_html=True)
 st.markdown('<p>또 왔네? 광고 카피가 그냥 자판기 버튼 누르면 나오는 줄 아는구나.. 응 실은 맞아....<br><br>최근 광고 카피를 학습하여 알맞은 카피를 제공합니다. 최대한 많은 정보를 제공해주세요.</p>', unsafe_allow_html=True)
 with (st.form("input_form")):
     분류 = st.selectbox("업종 선택", ["화장품", "식품\제과", "전기전자"])
