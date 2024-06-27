@@ -10,7 +10,7 @@ app = FastAPI()
 
 class CompletionExecutor:
     def __init__(self):
-        self._host = os.getenv('API_HOST')
+        self._host = 'https://clovastudio.stream.ntruss.com'
         self._api_key = os.getenv('API_KEY')
         self._api_key_primary_val = os.getenv('API_KEY_PRIMARY_VAL')
         self._request_id = os.getenv('REQUEST_ID')
